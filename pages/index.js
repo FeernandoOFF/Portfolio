@@ -44,7 +44,7 @@ export const MainView = () => {
         </span>
         <p className="text-xl largeText">
           I&lsquo;m a web developer, and i get the
-          <span className="text-cYellow font-bold "> THIGS DONE</span>
+          <span className="text-cYellow font-bold "> THIGS DONE (Or not)</span>
         </p>
         <div className="buttons normalText hidden lg:flex font-semibold mt-[5vh] w-full lg:container mx-auto">
           <ButtonComponent href="/" primary>
