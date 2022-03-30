@@ -1,6 +1,7 @@
 import { ButtonComponent } from '@/components/general/ButtonComponent';
 import Layout from '@/components/general/Layout';
 import { SocialLink } from '@/components/general/SocialLink';
+import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons';
 
 const About = () => {
   return (
@@ -24,12 +25,18 @@ const About = () => {
             <ButtonComponent primary className="mr-6 lg:mr-14">
               Contact Me
             </ButtonComponent>
-            <ButtonComponent>Projects</ButtonComponent>
+            <ButtonComponent href="/projects">Projects</ButtonComponent>
           </div>
-          <div className="socialLinks mt-11 grid grid-cols-3 gap-6 w-full lg:w-3/4  mx-auto">
-            <SocialLink href="/">Instagram</SocialLink>
-            <SocialLink href="/">TikTok</SocialLink>
-            <SocialLink href="/">Youtube</SocialLink>
+          <div className="socialLinks  mt-11  text-3xl grid grid-cols-3 gap-6 w-full lg:w-3/4  mx-auto">
+            <SocialLink href="https://github.com/FeernandoOFF">
+              <GithubOutlined />
+            </SocialLink>
+            <SocialLink href="https://www.linkedin.com/in/feernandooff/">
+              <LinkedinOutlined />
+            </SocialLink>
+            <SocialLink href="/" className="cursor-not-allowed">
+              <img src="/tiktok.png" />
+            </SocialLink>
           </div>
         </div>
       </div>

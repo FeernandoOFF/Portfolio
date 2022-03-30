@@ -5,6 +5,7 @@ import {
   CloudOutlined,
   GithubOutlined,
   InstagramOutlined,
+  LinkedinOutlined,
   RocketOutlined,
   UnlockOutlined,
   YoutubeOutlined,
@@ -56,17 +57,17 @@ export const MainView = () => {
           </ButtonComponent>
         </div>
         <div className="hidden lg:flex contact mt-[5vh] justify-around max-w-[220px] lg:max-w-[300px] flex-wrap gap-4 lg:gap-8 ">
-          <SocialLink href="/">
-            <InstagramOutlined />
+          <SocialLink href="https://www.instagram.com/feernandooff/">
+            <img src="/instagram.png" />
           </SocialLink>
-          <SocialLink href="/">
-            <YoutubeOutlined />
+          <SocialLink href="/" className="cursor-not-allowed">
+            <img src="/tiktok.png" />
           </SocialLink>
-          <SocialLink href="/">
+          <SocialLink href="https://github.com/FeernandoOFF">
             <GithubOutlined />
           </SocialLink>
-          <SocialLink href="/">
-            <InstagramOutlined />
+          <SocialLink href="https://www.linkedin.com/in/feernandooff/">
+            <LinkedinOutlined />
           </SocialLink>
         </div>
       </div>
@@ -245,9 +246,15 @@ export const Testimonials = (props) => {
         <h5 className="yellowTitle">CONTACT</h5>
         <div className="grid lg:grid-cols-3 lg:gap-48 items-center mt-8 px-8">
           <div className="links my-16 lg:my-8 flex justify-between items-center max-w-[330px]">
-            <SocialLink href="/"> x</SocialLink>
-            <SocialLink href="/"> x</SocialLink>
-            <SocialLink href="/"> x</SocialLink>
+            <SocialLink href="https://www.linkedin.com/in/feernandooff/">
+              <LinkedinOutlined />
+            </SocialLink>
+            <SocialLink href="https://github.com/FeernandoOFF">
+              <GithubOutlined />
+            </SocialLink>
+            <SocialLink href="https://www.instagram.com/feernandooff/">
+              <img src="/instagram.png" />
+            </SocialLink>
           </div>
           <div className="text min-w-[300px] text-center">
             <h5 className="text-2xl font-bold">

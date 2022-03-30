@@ -3,7 +3,7 @@ import React from 'react';
 function WorkingOn() {
   return (
     <>
-      <div className="container max-w-[500px]">
+      <div className="container max-w-[500px] mx-auto">
         <img
           src="/workingon.svg"
           alt=""
