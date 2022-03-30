@@ -42,14 +42,14 @@ export const Header = () => {
           Web Developer
         </motion.p>
       </div>
-      <div className="right  flex justify-between items-center max-w-[200px] min-w-[70px] ">
+      <div className="right  flex justify-end lg:justify-between items-center max-w-[200px] min-w-[70px] ">
         {/* <MoreOutlined className="text-2xl" /> */}
         <ul className="justify-between  py-4 hidden lg:flex">
-          {links.map((link) => {
+          {links.map((link) => (
             <LinkComponent key={link.path} href={link.path}>
               {link.name}
-            </LinkComponent>;
-          })}
+            </LinkComponent>
+          ))}
         </ul>
         <button onClick={toggleSidebar} className="lg:hidden">
           <MenuOutlined className="text-2xl text-cYellow" />
