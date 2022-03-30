@@ -1,16 +1,58 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+.yellowTitle {
+  @apply text-cYellow font-bold text-lg lg:text-2xl my-4;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.normalText {
+  @apply text-sm lg:text-base;
 }
 
-* {
-  box-sizing: border-box;
+.largeText {
+  @apply text-base lg:text-lg;
+}
+
+.subtitle {
+  @apply text-2xl lg:text-4xl font-bold;
+}
+
+.imgBackground {
+  background: url("/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+/* .imgBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    95.83deg,
+    rgba(255, 255, 255, 0.4) 13.62%,
+    rgba(255, 255, 255, 0.1) 77.25%
+  );
+  /* backdrop-filter: blur(23px); */
+
+.reel::-webkit-scrollbar {
+  display: none;
+}
+
+.semiCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotateZ(316deg) translate(-46%, -190%);
+  border-radius: 150px 150px 0 0;
+  background-color: #d3f3e4;
+}
+.semiImage {
+  transform: translate(-60%, 10%);
+  z-index: 5;
 }
