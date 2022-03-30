@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export function PortfolioItem({ active = false, title, onClick, index }) {
   return (
     <div
-      className="item mx-6  text-center min-w-[300px] "
+      className="item mx-6  text-center min-w-[300px] cursor-pointer"
       onClick={() => onClick(index)}
     >
       <motion.div

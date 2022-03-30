@@ -1,33 +1,58 @@
-import { Link } from 'next/link';
+import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import { ButtonComponent } from '../general/ButtonComponent';
+import { PortfolioItem } from './PortfolioItem';
 
 export function ItemRail() {
+  function handleScroll() {
+    console.log('Scroll');
+  }
+
+  function nextPage(i) {
+    console.log('nextPage', i);
+    setVisible(projects.slice(i - 2, i + 2));
+  }
+
+  const reelRef = useRef(null);
   let projects = [
     'Dana Lite',
     'Spotify Clone',
     'Zoom Clone',
     'Todo App +',
-    'Trip Advisor',
+    'Trip Advisor 1',
+    'Trip Advisor 2',
+    'Trip Advisor 3',
+    'Trip Advisor 4',
+    'Trip Advisor 5',
   ];
+  const [visible, setVisible] = useState(projects.slice(0, 5));
+
+  // useEffect(() => {
+  //   reelRef.current?.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     reelRef.current?.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div>
-      <div className="reel font-mono flex flex-row flex-nowrap items-center mx-auto justify-between overflow-x-scroll mt-32 mb-28 cursor-pointer py-2">
-        {projects.map((title, i) => {
-          return <div key={i}>{title}</div>;
-        })}
+      <div
+        ref={reelRef}
+        className="font-mono flex flex-row flex-nowrap items-center justify-between overflow-x-hidden mt-32 mb-28 py-2"
+      >
+        {visible.map((project, index) => (
+          <PortfolioItem
+            key={project}
+            onClick={nextPage}
+            index={index}
+            title={project}
+            active={index == 2}
+          />
+        ))}
       </div>
-      <Link passHref={true} href="/">
-        <button className="mx-auto bg-cYellow px-4 py-3 rounded-md inline-block text-white font-semibold mb-32 text-lg cursor-pointer">
-          See My work
-        </button>
-      </Link>
+      <ButtonComponent href="/projects" className="mb-32" primary>
+        See My work
+      </ButtonComponent>
     </div>
   );
 }
-/* <PortfolioItem
-              key={title}
-              onClick={setActive}
-              index={i}
-              title={title}
-              active={active == i}
-            ></PortfolioItem> */

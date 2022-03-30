@@ -21,7 +21,9 @@ const About = () => {
         <div className="circle w-[200px]  h-[200px]  lg:w-[300px] lg:h-[300px] bg-gray-300 rounded-full mx-auto shadow-xl hover:shadow-2xl transition-all"></div>
         <div className="lg:w-1/2 mx-auto mt-11">
           <div className="buttons flex justify-between mx-4">
-            <ButtonComponent primary>Contact Me</ButtonComponent>
+            <ButtonComponent primary className="mr-6 lg:mr-14">
+              Contact Me
+            </ButtonComponent>
             <ButtonComponent>Projects</ButtonComponent>
           </div>
           <div className="socialLinks mt-11 grid grid-cols-3 gap-6 w-full lg:w-3/4  mx-auto">

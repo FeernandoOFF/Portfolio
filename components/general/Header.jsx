@@ -5,6 +5,24 @@ import React, { ReactElement, useState } from 'react';
 import LinkComponent from './LinkComponent';
 
 export const Header = () => {
+  const links = [
+    {
+      name: 'Home',
+      path: '/',
+    },
+    {
+      name: 'Projects',
+      path: '/projects',
+    },
+    {
+      name: 'Blog',
+      path: '/blog',
+    },
+    {
+      name: 'About',
+      path: '/about',
+    },
+  ];
   const [sidebar, setsidebar] = useState(false);
   const toggleSidebar = () => {
     setsidebar(!sidebar);
@@ -27,10 +45,11 @@ export const Header = () => {
       <div className="right  flex justify-between items-center max-w-[200px] min-w-[70px] ">
         {/* <MoreOutlined className="text-2xl" /> */}
         <ul className="justify-between  py-4 hidden lg:flex">
-          <LinkComponent href="/">Home</LinkComponent>
-          <LinkComponent href="/blog">Blog</LinkComponent>
-          <LinkComponent href="/projects">Projects</LinkComponent>
-          <LinkComponent href="/about">About</LinkComponent>
+          {links.map((link) => {
+            <LinkComponent key={link.path} href={link.path}>
+              {link.name}
+            </LinkComponent>;
+          })}
         </ul>
         <button onClick={toggleSidebar} className="lg:hidden">
           <MenuOutlined className="text-2xl text-cYellow" />
@@ -48,21 +67,15 @@ export const Header = () => {
         }}
       >
         <div className="flex flex-col">
-          <LinkComponent
-            onClick={() => toggleSidebar()}
-            title="Home"
-            href="/"
-          />
-          <LinkComponent
-            onClick={() => toggleSidebar()}
-            title="About"
-            href="/about"
-          />
-          <LinkComponent
-            onClick={() => toggleSidebar()}
-            title="Blog"
-            href="/blog"
-          />
+          {links.map((link) => (
+            <LinkComponent
+              key={link.path}
+              onClick={() => toggleSidebar()}
+              href={link.path}
+            >
+              {link.name}
+            </LinkComponent>
+          ))}
         </div>
       </Drawer>
     </header>

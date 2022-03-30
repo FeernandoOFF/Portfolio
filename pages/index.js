@@ -17,12 +17,12 @@ import Layout from '@/components/general/Layout';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <MainView />
       <Work />
       <Skills />
       <Testimonials />
-    </div>
+    </>
   );
 };
 
@@ -48,10 +48,12 @@ export const MainView = () => {
           <span className="text-cYellow font-bold "> THIGS DONE</span>
         </p>
         <div className="buttons normalText hidden lg:flex font-semibold mt-[5vh] w-full lg:container mx-auto">
-          <ButtonComponent href="/" primary>
+          <ButtonComponent href="/" primary className="mr-6 lg:mr-14">
             Contact Me
           </ButtonComponent>
-          <ButtonComponent href="/about">About Me</ButtonComponent>
+          <ButtonComponent href="/about" className="lg:px-8 px-4 py-3">
+            About Me
+          </ButtonComponent>
         </div>
         <div className="hidden lg:flex contact mt-[5vh] justify-around max-w-[220px] lg:max-w-[300px] flex-wrap gap-4 lg:gap-8 ">
           <SocialLink href="/">
@@ -101,7 +103,7 @@ export const MainView = () => {
 
 export const Work = (props) => {
   return (
-    <article className="min-h-[50vh] container mt-[5vh] mx-auto">
+    <article className="min-h-[50vh] mt-[5vh] w-full ">
       <div className="tech">
         <div className="title text-center">
           <h5 className="subtitle ">What i&lsquo;m good at</h5>
@@ -146,7 +148,7 @@ export const Work = (props) => {
           <h5 className="yellowTitle">PORTFOLIO</h5>
           <h5 className="subtitle ">My Recent Work</h5>
         </div>
-        {/* <ItemRail /> */}
+        <ItemRail />
       </div>
     </article>
   );
@@ -233,7 +235,7 @@ export const Testimonials = (props) => {
             <p className="pb-[5vh]">
               <span className="text-cYellow font-medium text-lg">
                 Pedro León
-              </span>{' '}
+              </span>
               - CEO Accesa.me
             </p>
           </div>
@@ -257,9 +259,9 @@ export const Testimonials = (props) => {
             </p>
           </div>
           <div className="contact ">
-            <button className="text-white font-semibold lg:px-8 px-4 py-3 rounded-lg bg-cYellow mr-6 lg:mr-14 shadow-md">
+            <ButtonComponent href="/" primary>
               Contact Me
-            </button>
+            </ButtonComponent>
           </div>
         </div>
         <p className="text-cYellow font-semibold text-xl my-8 text-center">

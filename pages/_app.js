@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -300, opacity: 0 }}
       id="page-transition-container"
+      className="w-screen"
     >
       {getLayout(<Component {...pageProps} />)}
     </AnimatePresence>
