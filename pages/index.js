@@ -13,6 +13,7 @@ import { ButtonComponent } from '../components/general/ButtonComponent';
 import { SocialLink } from '@/components/general/SocialLink';
 import { ItemRail } from '@/components/indexPage/ItemRail';
 import { TimeLineItem } from '@/components/general/TimeLineItem';
+import Layout from '@/components/general/Layout';
 
 const Home = () => {
   return (
@@ -25,8 +26,8 @@ const Home = () => {
   );
 };
 
-// Home.suppressFirstRenderFlicker = true
-// Home.getLayout = (page) => <Layout title="Home |  Feernandooff">{page}</Layout>
+Home.suppressFirstRenderFlicker = true;
+Home.getLayout = (page) => <Layout title="Home |  Feernandooff">{page}</Layout>;
 
 export default Home;
 
@@ -44,7 +45,7 @@ export const MainView = () => {
         </span>
         <p className="text-xl largeText">
           I&lsquo;m a web developer, and i get the
-          <span className="text-cYellow font-bold "> THIGS DONE (Or not)</span>
+          <span className="text-cYellow font-bold "> THIGS DONE</span>
         </p>
         <div className="buttons normalText hidden lg:flex font-semibold mt-[5vh] w-full lg:container mx-auto">
           <ButtonComponent href="/" primary>

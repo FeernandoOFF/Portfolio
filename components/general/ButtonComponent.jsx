@@ -12,7 +12,7 @@ export function ButtonComponent({ primary, children, href }) {
   }
 
   return (
-    <Link href={href}>
+    <Link href={href ? href : '/'}>
       <button className="font-semibold lg:px-8 px-4 py-3 rounded-lg bg-lightGreen text-black">
         {children}
       </button>

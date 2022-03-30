@@ -1,0 +1,79 @@
+import { MenuOutlined, MoreOutlined } from '@ant-design/icons';
+import { Button, Drawer, Popover } from 'antd';
+import { motion } from 'framer-motion';
+import React, { ReactElement, useState } from 'react';
+import LinkComponent from './LinkComponent';
+
+export const Header = () => {
+  const [sidebar, setsidebar] = useState(false);
+  const toggleSidebar = () => {
+    setsidebar(!sidebar);
+  };
+  return (
+    <header className="container  mx-auto flex justify-between lg:p-3 py-3 px-2 items-center">
+      <div className="left w-1/2 lg:w-1/6 flex justify-between items-center normalText">
+        <p>FerOFF</p>
+        <motion.p
+          animate={{
+            textDecorationLine: 'underline',
+            transition: { duration: 5 },
+          }}
+          initial={{ textDecorationLine: 'none' }}
+          className=" underline-offset-4 normalText font-medium"
+        >
+          Web Developer
+        </motion.p>
+      </div>
+      <div className="right  flex justify-between items-center max-w-[200px] min-w-[70px] ">
+        {/* <MoreOutlined className="text-2xl" /> */}
+        <ul className="justify-between  py-4 hidden lg:flex">
+          <LinkComponent href="/">Home</LinkComponent>
+          <LinkComponent href="/blog">Blog</LinkComponent>
+          <LinkComponent href="/projects">Projects</LinkComponent>
+          <LinkComponent href="/about">About</LinkComponent>
+        </ul>
+        <button onClick={toggleSidebar} className="lg:hidden">
+          <MenuOutlined className="text-2xl text-cYellow" />
+        </button>
+      </div>
+      <Drawer
+        visible={sidebar}
+        onClose={toggleSidebar}
+        size="default"
+        headerStyle={{
+          backgroundColor: '#f4f4f4',
+        }}
+        drawerStyle={{
+          backgroundColor: '#f4f4f4',
+        }}
+      >
+        <div className="flex flex-col">
+          <LinkComponent
+            onClick={() => toggleSidebar()}
+            title="Home"
+            href="/"
+          />
+          <LinkComponent
+            onClick={() => toggleSidebar()}
+            title="About"
+            href="/about"
+          />
+          <LinkComponent
+            onClick={() => toggleSidebar()}
+            title="Blog"
+            href="/blog"
+          />
+        </div>
+      </Drawer>
+    </header>
+  );
+};
+
+const Options = () => {
+  return (
+    <div>
+      <p>Content</p>
+      <p>Content</p>
+    </div>
+  );
+};
