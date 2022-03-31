@@ -181,9 +181,21 @@ export const Skills = (props) => {
       filter: 'digitalocean',
     },
     { name: 'Git', logo: '/github.png', filter: 'git' },
-    { name: 'HTML', logo: '/nextReactLogo.png', filter: 'react' },
-    { name: 'CSS', logo: '/nextReactLogo.png', filter: 'react' },
-    { name: 'Vue', logo: '/nextReactLogo.png', filter: 'react' },
+    {
+      name: 'Docker',
+      logo: 'https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png',
+      filter: 'docker',
+    },
+    {
+      name: 'Laravel',
+      logo: 'https://laravel.com/img/logomark.min.svg',
+      filter: 'laravel',
+    },
+    {
+      name: 'Figma',
+      logo: 'https://static.figma.com/app/icon/1/favicon.ico',
+      filter: 'figma',
+    },
   ];
   return (
     <article className="max-w-[1500px] mx-auto text-center min-h-[50vh]">
@@ -199,9 +211,13 @@ export const Skills = (props) => {
               whileHover={{
                 transform: 'translateY(-8px) translateX(-8px)',
                 boxShadow: 'rgb(173 173 173) 10px 10px 10px',
+                filter: 'grayscale(0%)',
               }}
-              className=" h-36 bg-yellow-600 rounded-md opacity-60 grid place-items-center hover:grayscale-0 grayscale"
-              onClick={() => setModal(true)}
+              initial={{
+                filter: 'grayscale(98%)',
+              }}
+              className=" h-36 bg-yellow-600 rounded-md opacity-60 grid place-items-center  "
+              // onClick={() => setModal(true)}
             >
               <img src={skill.logo} className="w-full max-w-[115px]" />
             </motion.div>
@@ -210,24 +226,38 @@ export const Skills = (props) => {
         <div className="trajectory w-full lg:w-1/3  mt-[10vh] lg:mt-10">
           <Timeline mode="left">
             <Timeline.Item
-              dot={<RocketOutlined className="text-lg" />}
+              dot={<UnlockOutlined className="text-lg" />}
               label={
-                <p className="text-xl lg:text-3xl text-cYellow font-semibold">
-                  2020
-                </p>
+                <div>
+                  <p className="text-xl lg:text-xl text-cYellow font-semibold">
+                    2020- 2022
+                  </p>
+                </div>
               }
             >
-              <TimeLineItem />
+              <TimeLineItem
+                title="Accesa Full-Stack Developer"
+                points={[
+                  'Project Consulting',
+                  'Research',
+                  'Deployment',
+                  'Automation',
+                ]}
+              />
             </Timeline.Item>
             <Timeline.Item
-              dot={<UnlockOutlined className="text-lg" />}
+              dot={<RocketOutlined className="text-lg" />}
               label={
                 <p className="text-xl lg:text-3xl text-cYellow font-semibold">
                   2021
                 </p>
               }
             >
-              <TimeLineItem />
+              <TimeLineItem
+                title="Huawei Hackathon winner"
+                points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
+                link="https://www.conalep.edu.mx/sites/default/files/2021-03/Convocatoria%20Hackato%CC%81n%20CONALEP%202021_1.pdf"
+              />
             </Timeline.Item>
             <Timeline.Item
               dot={<CloudOutlined className="text-lg" />}
@@ -237,7 +267,10 @@ export const Skills = (props) => {
                 </p>
               }
             >
-              <TimeLineItem />
+              <TimeLineItem
+                title="Call to Code | IBM Hackathon "
+                points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
+              />
             </Timeline.Item>
           </Timeline>
         </div>
@@ -256,7 +289,7 @@ export const Skills = (props) => {
 export const Testimonials = (props) => {
   return (
     <article className="mt-[15vh]">
-      <div className="imgBackground min-h-[75vh] pt-[5vh]">
+      {/* <div className="imgBackground min-h-[75vh] pt-[5vh]">
         <div className="content mx-auto mt-[5vh] max-w-[500px]">
           <div className="circle w-[200px] h-[200px] rounded-full bg-cYellow mx-auto"></div>
           <div className="text text-center mx-auto">
@@ -272,7 +305,7 @@ export const Testimonials = (props) => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="p-4 text-center mt-[5vh]">
         <h5 className="yellowTitle">CONTACT</h5>
         <div className="grid lg:grid-cols-3 lg:gap-48 items-center mt-8 px-8">
@@ -292,8 +325,8 @@ export const Testimonials = (props) => {
               Got a Project? Let&apos;s Talk
             </h5>
             <p className="lg:max-w-[30vw] text-center font-semibold my-10 lg:my-4 mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              neque voluptatibus illo exercitationem aspernatur voluptates quas!
+              If you are interested in creating a new project and you think that
+              i can fit in there, dont think twice about contact me!
             </p>
           </div>
           <div className="contact ">

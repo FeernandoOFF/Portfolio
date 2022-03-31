@@ -1,11 +1,20 @@
-export function TimeLineItem() {
+export function TimeLineItem({ title, points, link }) {
   return (
     <>
-      <h6 className="font-medium text-black text-lg">Full-Stack Developer</h6>
+      <a
+        href={link}
+        className={`font-medium text-black text-lg ${
+          link ? 'cursor-pointer' : 'cursor-not-allowed'
+        } `}
+      >
+        {title}
+      </a>
       <ul className="text-gray-800">
-        <li className="list-decimal">Team Managment</li>
-        <li className="list-decimal">Team Managment</li>
-        <li className="list-decimal">Team Managment</li>
+        {points?.map((point, index) => (
+          <li key={index} className="list-decimal">
+            {point}{' '}
+          </li>
+        ))}
       </ul>
     </>
   );
