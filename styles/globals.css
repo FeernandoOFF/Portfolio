@@ -56,3 +56,12 @@
   transform: translate(-60%, 10%);
   z-index: 5;
 }
+
+@media screen and (max-width:640px){
+  .semiCircle {
+    left: 90%;
+  }
+  .semiImage {
+    transform: translate(-1%, 10%);
+  }
+}

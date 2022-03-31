@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Timeline } from 'antd';
@@ -15,6 +16,7 @@ import { SocialLink } from '@/components/general/SocialLink';
 import { ItemRail } from '@/components/indexPage/ItemRail';
 import { TimeLineItem } from '@/components/general/TimeLineItem';
 import Layout from '@/components/general/Layout';
+import Modal from 'antd/lib/modal/Modal';
 
 const Home = () => {
   return (
@@ -46,7 +48,12 @@ export const MainView = () => {
         </span>
         <p className="text-xl largeText">
           I&lsquo;m a web developer, and i get the
-          <span className="text-cYellow font-bold "> THIGS DONE</span>
+          <motion.span
+            animate={{ scale: 1.2 }}
+            className="text-cYellow font-bold pl-1"
+          >
+            THINGS DONE
+          </motion.span>
         </p>
         <div className="buttons normalText hidden lg:flex font-semibold mt-[5vh] w-full lg:container mx-auto">
           <ButtonComponent href="/" primary className="mr-6 lg:mr-14">
@@ -104,20 +111,22 @@ export const MainView = () => {
 
 export const Work = (props) => {
   return (
-    <article className="min-h-[50vh] mt-[5vh] w-full ">
+    <article className="min-h-[50vh] mt-[15vh] lg:mt-[5vh] w-full ">
       <div className="tech">
         <div className="title text-center">
           <h5 className="subtitle ">What i&lsquo;m good at</h5>
           <h5 className="yellowTitle">SPECIALIZED IN</h5>
         </div>
         <div className="items w-full lg:w-10/12 flex justify-between mx-auto my-[5vh] text-xs lg:text-base text-center lg:text-left">
-          <div className="item flex flex-col lg:flex-row justify-center items-center lg:justify-between ">
+          <div className="item flex flex-col lg:flex-row justify-center items-center lg:justify-between grayscale cursor-not-allowed scale-75 lg:scale-100">
             <div className="bg-[#fb920057] h-16 w-16 rounded-xl lg:mr-4 grid place-items-center">
               <img src="/phone.png" alt="" />
             </div>
-            <div className="text lg:mt-0 mt-4">
-              <h2 className="font-semibold my-2">App Mobile Development</h2>
-              <p>I’ll do a incredible app</p>
+            <div className="text lg:mt-0 mt-4 ">
+              <h2 className="font-semibold my-2">
+                App Mobile Development (Coming soon){' '}
+              </h2>
+              <p className="text-gray-500">Creation of multi-platform apps</p>
             </div>
           </div>
           <div className="item flex flex-col lg:flex-row justify-center items-center lg:justify-between  ">
@@ -126,20 +135,24 @@ export const Work = (props) => {
             </div>
             <div className="text lg:mt-0 mt-4">
               <h2 className="font-semibold my-2">Web Development</h2>
-              <p>I’ll do a incredible app</p>
+              <p className="text-gray-500">
+                Full stack solutions for all kind of web apps
+              </p>
             </div>
           </div>
-          <div className="item flex flex-col lg:flex-row justify-center items-center lg:justify-between  ">
+          <div className="item flex flex-col lg:flex-row justify-center items-center lg:justify-between  scale-75 lg:scale-100">
             <div className="relative h-16 w-16 rounded-md lg:mr-4 grid place-items-center">
               <img src="/cpu.png" alt="" className="semiImage" />
-              <div className="semiCircle h-10 w-20"></div>
+              <div className="semiCircle h-10 w-20 "></div>
             </div>
 
             <div className="text lg:mt-0 mt-4">
               <h2 className="font-semibold my-2">
                 Integration with Electroics
               </h2>
-              <p>I’ll do a incredible app</p>
+              <p className="text-gray-500">
+                Inegration across multiple IoT devices
+              </p>
             </div>
           </div>
         </div>
@@ -156,35 +169,45 @@ export const Work = (props) => {
 };
 
 export const Skills = (props) => {
+  const [isModalVisible, setModal] = useState(false);
   const skills = [
-    { name: 'HTML', value: '90' },
-    { name: 'CSS', value: '90' },
-    { name: 'React/Next', value: '90' },
-    { name: 'Vue', value: '90' },
-    { name: 'Nest/Express', value: '90' },
-    { name: 'Nginx', value: '90' },
-    { name: 'Mysql/PostgreSQL', value: '90' },
-    { name: 'Digital Ocean', value: '90' },
-    { name: 'Git', value: '90' },
+    { name: 'React/Next', logo: '/nextReactLogo.png', filter: 'react' },
+    { name: 'Nest/Express', logo: '/nestLogo.svg', filter: 'nest' },
+    { name: 'Nginx', logo: '/nginxLogo.ico', filter: 'nginx' },
+    { name: 'Mysql/PostgreSQL', logo: '/mysqlLogo.png', filter: 'sql' },
+    {
+      name: 'Digital Ocean',
+      logo: '/digitalOceanLogo.png',
+      filter: 'digitalocean',
+    },
+    { name: 'Git', logo: '/github.png', filter: 'git' },
+    { name: 'HTML', logo: '/nextReactLogo.png', filter: 'react' },
+    { name: 'CSS', logo: '/nextReactLogo.png', filter: 'react' },
+    { name: 'Vue', logo: '/nextReactLogo.png', filter: 'react' },
   ];
   return (
-    <article className="container mx-auto text-center min-h-[50vh]">
+    <article className="max-w-[1500px] mx-auto text-center min-h-[50vh]">
       <div className="title">
         <h5 className="yellowTitle">MY STACK</h5>
         <h5 className="subtitle ">Skills & Experiences</h5>
       </div>
       <div className="flex w-full flex-col lg:flex-row justify-between my-[15vh]">
-        <div className="skillset w-full grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-10 max-w-[800px]">
+        <div className="skillset lg:w-[60%] grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-12 max-w-[600px]">
           {skills.map((skill) => (
-            <div
+            <motion.div
               key={skill.name}
-              className=" h-36 bg-cYellow rounded-md opacity-60"
+              whileHover={{
+                transform: 'translateY(-8px) translateX(-8px)',
+                boxShadow: 'rgb(173 173 173) 10px 10px 10px',
+              }}
+              className=" h-36 bg-yellow-600 rounded-md opacity-60 grid place-items-center hover:grayscale-0 grayscale"
+              onClick={() => setModal(true)}
             >
-              {skill.name}
-            </div>
+              <img src={skill.logo} className="w-full max-w-[115px]" />
+            </motion.div>
           ))}
         </div>
-        <div className="trayectory w-full lg:w-1/3  mt-[10vh] lg:mt-10">
+        <div className="trajectory w-full lg:w-1/3  mt-[10vh] lg:mt-10">
           <Timeline mode="left">
             <Timeline.Item
               dot={<RocketOutlined className="text-lg" />}
@@ -219,6 +242,14 @@ export const Skills = (props) => {
           </Timeline>
         </div>
       </div>
+      <Modal
+        title="Basic Modal"
+        visible={isModalVisible}
+        onOk={() => setModal(false)}
+        onCancel={() => setModal(false)}
+      >
+        <div>Some relevant projects... request to backend</div>
+      </Modal>
     </article>
   );
 };
