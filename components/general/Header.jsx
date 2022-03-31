@@ -28,7 +28,7 @@ export const Header = () => {
     setsidebar(!sidebar);
   };
   return (
-    <header className="container  mx-auto flex justify-between lg:p-3 py-3 px-2 items-center">
+    <header className="container  mx-auto flex justify-between lg:p-3 py-3 px-2 items-center w-full">
       <div className="left w-1/2 lg:w-1/6 flex justify-between items-center normalText">
         <p>FerOFF</p>
         <motion.p
