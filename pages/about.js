@@ -1,4 +1,5 @@
 import { ButtonComponent } from '@/components/general/ButtonComponent';
+import { motion } from 'framer-motion';
 import Layout from '@/components/general/Layout';
 import { SocialLink } from '@/components/general/SocialLink';
 import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons';
@@ -10,16 +11,21 @@ const About = () => {
         <h2 className="text-5xl font-semibold">Hello!</h2>
         <h1 className="text-5xl font-semibold">Im Fernando Obregon.</h1>
         <p className="max-w-[500px] mt-8 text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit sapien,
-          sed vel
-          <b>tristique aliquet pellentesque amet</b> nisi. Et purus, nunc
-          scelerisque mollis euismod habitant lectus volutpat. Netus turpis
-          pellentesque in nulla adipiscing. Neque, nisl, odio a, sed vestibulum
-          vel.
+          A <b>full-stack </b>developer with 1+ years of experience, mainly
+          working with <b>JavaScript and PHP.</b> Focused on IoT devices and
+          Real-Time interactions. Also like to be part of{' '}
+          <b>all the process of a software</b>, since the requirements all the
+          way to production.
         </p>
       </div>
       <div className="right justify-center flex flex-col my-[5vh]">
-        <div className="circle w-[200px]  h-[200px]  lg:w-[300px] lg:h-[300px] bg-gray-300 rounded-full mx-auto shadow-xl hover:shadow-2xl transition-all"></div>
+        <motion.div
+          whileHover={{
+            boxShadow: '#A5A5A5 3px 15px 10px',
+            transition: 'translateY(-10px)',
+          }}
+          className="circle w-[200px]  h-[200px]  lg:w-[300px] lg:h-[300px] bg-gray-300 rounded-full mx-auto shadow-xl  transition-all"
+        ></motion.div>
         <div className="lg:w-1/2 mx-auto mt-11">
           <div className="buttons flex justify-between mx-4">
             <ButtonComponent primary className="mr-6 lg:mr-14">
