@@ -36,7 +36,7 @@ export function PortfolioItem({ active = false, project, onClick, index }) {
             active ? 'text-gray-500 text-base' : 'text-black'
           }`}
         >
-          {project.name}
+          {project.title}
         </motion.h4>
       </div>
     </Link>

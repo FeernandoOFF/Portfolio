@@ -28,9 +28,9 @@ export default function Projects({ projects }) {
             if (filter == '' || project.category == filter)
               return (
                 <Link href={project.url} key={i}>
-                  <div className="bg-gray-300 text-center p-4 rounded-md cursor-pointer relative">
-                    <h3>{project.name} </h3>
-                    <div className="overlay bottom-0 left-0 bg-blue-400 p-4 hidden hover:block"></div>
+                  <div className="bg-gray-300 text-center p-4 rounded-md cursor-pointer relative group overflow-hidden">
+                    <div className="overlay absolute bottom-[-1000px] left-0 bg-blue-400 p-4  group-hover:bottom-0 group-hover:opacity-100 transition-all rounded-md"></div>
+                    <h3>{project.title} </h3>
                   </div>
                 </Link>
               );
@@ -43,7 +43,7 @@ export default function Projects({ projects }) {
     </div>
   );
 
-  function Filters(filter, setFilter) {
+  function Filters({ filter, setFilter }) {
     return (
       <ul className="flex mt-20  text-base lg:text-lg font-semibold text-gray-600 justify-between mx-auto max-w-[500px] ">
         <li

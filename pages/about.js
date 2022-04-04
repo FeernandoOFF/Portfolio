@@ -24,6 +24,11 @@ const About = () => {
             boxShadow: '#A5A5A5 3px 15px 10px',
             transition: 'translateY(-10px)',
           }}
+          style={{
+            background: "url('/FernandoObregon.jpeg')",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }}
           className="circle w-[200px]  h-[200px]  lg:w-[300px] lg:h-[300px] bg-gray-300 rounded-full mx-auto shadow-xl  transition-all"
         ></motion.div>
         <div className="lg:w-1/2 mx-auto mt-11">
