@@ -8,8 +8,8 @@ const About = () => {
   return (
     <div className="grid grid-cols-1 w-3/4 lg:w-full lg:grid-cols-2 container mx-auto lg:mt-[15vh]">
       <div className="left mt-[5vh] ">
-        <h2 className="text-5xl font-semibold">Hello!</h2>
-        <h1 className="text-5xl font-semibold">Im Fernando Obregon.</h1>
+        <h2 className="text-5xl font-semibold">Hello! Im</h2>
+        <h1 className="text-5xl font-semibold">Fernando Obregon.</h1>
         <p className="max-w-[500px] mt-8 text-lg">
           A <b>full-stack </b>developer with 1+ years of experience, mainly
           working with <b>JavaScript and PHP.</b> Focused on IoT devices and
