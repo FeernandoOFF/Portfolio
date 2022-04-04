@@ -17,12 +17,13 @@ import { ItemRail } from '@/components/indexPage/ItemRail';
 import { TimeLineItem } from '@/components/general/TimeLineItem';
 import Layout from '@/components/general/Layout';
 import Modal from 'antd/lib/modal/Modal';
+import { getProjects } from 'utils/getProjects';
 
-const Home = () => {
+const Home = ({ projects }) => {
   return (
     <>
       <MainView />
-      <Work />
+      <Work projects={projects} />
       <Skills />
       <Testimonials />
     </>
@@ -31,6 +32,15 @@ const Home = () => {
 
 Home.suppressFirstRenderFlicker = true;
 Home.getLayout = (page) => <Layout title="Home |  Feernandooff">{page}</Layout>;
+
+export async function getStaticProps() {
+  const projects = await getProjects();
+  return {
+    props: {
+      projects,
+    },
+  };
+}
 
 export default Home;
 
@@ -109,7 +119,7 @@ export const MainView = () => {
   );
 };
 
-export const Work = (props) => {
+export const Work = ({ projects }) => {
   return (
     <article className="min-h-[50vh] mt-[15vh] lg:mt-[5vh] w-full ">
       <div className="tech">
@@ -162,7 +172,7 @@ export const Work = (props) => {
           <h5 className="yellowTitle">PORTFOLIO</h5>
           <h5 className="subtitle ">My Recent Work</h5>
         </div>
-        <ItemRail />
+        <ItemRail projects={projects} />
       </div>
     </article>
   );
