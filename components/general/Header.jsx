@@ -1,10 +1,12 @@
 import { MenuOutlined, MoreOutlined } from '@ant-design/icons';
 import { Button, Drawer, Popover } from 'antd';
-import { motion } from 'framer-motion';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import React, { ReactElement, useState } from 'react';
 import LinkComponent from './LinkComponent';
 
 export const Header = () => {
+  const route = useRouter();
   const links = [
     {
       name: 'Home',
@@ -44,13 +46,15 @@ export const Header = () => {
       </div>
       <div className="right  flex justify-end lg:justify-between items-center max-w-[200px] min-w-[70px] ">
         {/* <MoreOutlined className="text-2xl" /> */}
-        <ul className="justify-between  py-4 hidden lg:flex">
-          {links.map((link) => (
-            <LinkComponent key={link.path} href={link.path}>
-              {link.name}
-            </LinkComponent>
-          ))}
-        </ul>
+        <AnimateSharedLayout transition={{ duration: 2 }}>
+          <ul className="justify-between  py-4 hidden lg:flex">
+            {links.map((link) => (
+              <LinkComponent key={link.path} href={link.path}>
+                <span> {link.name}</span>
+              </LinkComponent>
+            ))}
+          </ul>
+        </AnimateSharedLayout>
         <button onClick={toggleSidebar} className="lg:hidden">
           <MenuOutlined className="text-2xl text-cYellow" />
         </button>

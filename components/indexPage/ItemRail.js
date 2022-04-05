@@ -5,7 +5,6 @@ import { PortfolioItem } from './PortfolioItem';
 
 export function ItemRail({ projects }) {
   function nextPage(i) {
-    console.log('nextPage', i);
     setVisible(projects.slice(i - 2, i + 2));
   }
 

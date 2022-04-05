@@ -1,5 +1,7 @@
 export async function getProjects() {
-  let projects = await fetch('https://test.feernandooff.com/projects');
+  let projects = await fetch(URL + '/projects');
   projects = await projects.json();
   return projects;
 }
+
+export const URL = 'https://test.feernandooff.com';

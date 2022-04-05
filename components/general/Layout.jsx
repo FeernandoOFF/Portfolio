@@ -16,7 +16,7 @@ const Layout = ({ title, children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header></Header>
+      <Header />
       <motion.div
         initial="hidden"
         animate="enter"
