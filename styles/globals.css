@@ -8,6 +8,10 @@
 *{
   font-family: 'Quicksand', sans-serif;
 }
+a{ color:#333
+}
+a:hover{ color:#333
+}
 
 .yellowTitle {
   @apply text-cYellow font-bold text-lg lg:text-2xl my-4;
