@@ -30,7 +30,7 @@ export const Header = () => {
     setsidebar(!sidebar);
   };
   return (
-    <header className="container  mx-auto flex justify-between lg:p-3 py-3 px-2 items-center w-full">
+    <header className="mx-auto flex justify-between lg:p-3 py-3 px-2 items-center w-full z-0 ">
       <div className="left w-1/2 lg:w-1/6 flex justify-between items-center normalText pointer-events-none ">
         <p>FerOFF</p>
         <motion.p
@@ -44,7 +44,7 @@ export const Header = () => {
           Web Developer
         </motion.p>
       </div>
-      <div className="right  flex justify-end lg:justify-between items-center max-w-[200px] min-w-[70px] ">
+      <div className="right  flex justify-start items-center w-1/4 ">
         {/* <MoreOutlined className="text-2xl" /> */}
         <LayoutGroup transition={{ duration: 2 }}>
           <ul className="justify-between  py-4 hidden lg:flex">

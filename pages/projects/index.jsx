@@ -81,7 +81,7 @@ export default function Projects({ projects }) {
                     <PortfolioItem
                       project={project}
                       setActive={setActive}
-                      key={project.title}
+                      key={project.id}
                     />
                   );
               })}
@@ -89,7 +89,6 @@ export default function Projects({ projects }) {
             <AnimatePresence>
               {active && (
                 <Project
-                  key="item"
                   id={active}
                   close={() => setActive(null)}
                   project={projects.find((project) => project.id === active)}
@@ -116,7 +115,7 @@ export const getStaticProps = async () => {
     props: {
       projects,
     },
-    revalidate: 15,
+    revalidate: 1500,
   };
 };
 
@@ -166,9 +165,8 @@ function PortfolioItem({ project, setActive }) {
 
 function Project({
   id,
-  key,
   close,
-  project: { title, description, mainImage, category },
+  project: { title, description, url, mainImage, category },
 }) {
   return (
     <>
@@ -193,22 +191,71 @@ function Project({
           placeItems: 'center',
         }}
       >
-        <div className="lg:min-h-[600px] w-4/5 bg-gray-400 z-60  rounded-lg flex flex-nowrap">
-          <motion.div className="min-h-[500px] rounded-lg w-1/2 flex flex-col overflow-y-scroll overflow-x-hidden">
+        <div
+          className="lg:min-h-[600px] max-h-[700px] overflow-hidden w-11/12 lg:w-4/5 bg-[#F4F4F4] z-60  rounded-lg flex flex-nowrap flex-col-reverse lg:flex-row"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <motion.div className="little-scrollbar py-8  lg:w-1/2 flex lg:flex-col lg:overflow-y-scroll overflow-x-scroll items-center lg:p-8 lg:min-h-[500px] rounded-lg lg:overflow-x-hidden">
             <motion.img
-              className="my-8 w-full min-h-[200px]"
+              className="my-8 max-w-[500px] max-h-[550px] min-w-[300px] min-h-[250px] z-40 rounded-md lg:mr-0 mr-8"
               src={URL + mainImage.url}
               layoutId={`portfolio-item-${id}`}
             />
             <motion.img
-              className="my-8"
+              className="my-8 max-w-[500px] max-h-[550px] min-w-[300px] min-h-[250px] z-40 rounded-md lg:mr-0 mr-8"
               src={URL + mainImage.url}
-              layoutId={`portfolio-item-${id}`}
+            />
+            <motion.img
+              className="my-8 max-w-[500px] max-h-[550px] min-w-[300px] min-h-[250px] z-40 rounded-md lg:mr-0 mr-8"
+              src={URL + mainImage.url}
             />
           </motion.div>
-          <motion.div className="w-1/2 bg-cGreen flex flex-col">
-            <h2>{title}</h2>
-            <p>{description} </p>
+          <motion.div className="lg:w-1/2 bg-cGreen flex flex-col relative">
+            <svg
+              className="absolute left-[-130px] top-0 h-[400px] w-[200px] z-30"
+              fill="#FF0000"
+              viewBox="0 0 54 341"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M53.5 0.5V341L16.0596 261.593C10.715 250.258 7.05074 238.205 5.18214 225.813L1.94172 204.324C-0.336702 189.215 -0.0713184 173.83 2.7269 158.808L6.08318 140.79C7.3592 133.94 9.15598 127.197 11.4579 120.62L53.5 0.5Z"
+                fill="#E2F4EC"
+              />
+            </svg>
+            <svg
+              className="absolute left-[-130px] bottom-0 h-[400px] w-[200px] z-50"
+              fill="#FF0000"
+              viewBox="0 0 54 341"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M53.5 0.5V341L16.0596 261.593C10.715 250.258 7.05074 238.205 5.18214 225.813L1.94172 204.324C-0.336702 189.215 -0.0713184 173.83 2.7269 158.808L6.08318 140.79C7.3592 133.94 9.15598 127.197 11.4579 120.62L53.5 0.5Z"
+                fill="#E2F4EC"
+              />
+            </svg>
+
+            <div className="content pt-[5vh] px-8">
+              <p className="text-lg p-4 text-cYellow">{category} </p>
+              <h2 className="text-3xl font-bold ">{title}</h2>
+              <div className="div">
+                <p className="text-lg p-4 ">Technologies:</p>
+                <div className="flex flex-nowrap justify-start overflow-x-scroll little-scrollbar">
+                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
+                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
+                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
+                </div>
+              </div>
+              <p className="text-lg p-8 ">{description} </p>
+
+              <div className="flex flex-row-reverse py-8">
+                <a
+                  className="p-3  bg-gray-400 rounded-md animate-pulse"
+                  href={url}
+                >
+                  See project
+                </a>
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
