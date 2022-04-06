@@ -19,6 +19,7 @@ import Layout from '@/components/general/Layout';
 import Modal from 'antd/lib/modal/Modal';
 import { getProjects } from 'utils/getProjects';
 
+import { isMobile } from 'react-device-detect';
 const Home = ({ projects }) => {
   return (
     <>
@@ -234,56 +235,11 @@ export const Skills = (props) => {
             </motion.div>
           ))}
         </div>
-        <div className="trajectory w-full lg:w-1/3  mt-[10vh] lg:mt-10">
-          <Timeline mode="left">
-            <Timeline.Item
-              dot={<UnlockOutlined className="text-lg" />}
-              label={
-                <div>
-                  <p className="text-xl lg:text-xl text-cYellow font-semibold">
-                    2020- 2022
-                  </p>
-                </div>
-              }
-            >
-              <TimeLineItem
-                title="Accesa Full-Stack Developer"
-                points={[
-                  'Project Consulting',
-                  'Research',
-                  'Deployment',
-                  'Automation',
-                ]}
-              />
-            </Timeline.Item>
-            <Timeline.Item
-              dot={<RocketOutlined className="text-lg" />}
-              label={
-                <p className="text-xl lg:text-3xl text-cYellow font-semibold">
-                  2021
-                </p>
-              }
-            >
-              <TimeLineItem
-                title="Huawei Hackathon winner"
-                points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
-                link="https://www.conalep.edu.mx/sites/default/files/2021-03/Convocatoria%20Hackato%CC%81n%20CONALEP%202021_1.pdf"
-              />
-            </Timeline.Item>
-            <Timeline.Item
-              dot={<CloudOutlined className="text-lg" />}
-              label={
-                <p className="text-xl lg:text-3xl text-cYellow font-semibold">
-                  2022
-                </p>
-              }
-            >
-              <TimeLineItem
-                title="Call to Code | IBM Hackathon "
-                points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
-              />
-            </Timeline.Item>
-          </Timeline>
+        <div className="trajectory w-full lg:w-1/3  mt-[10vh] lg:mt-10 hidden lg:block ">
+          <CarreerHistory mode="left" />
+        </div>
+        <div className="trajectory w-full lg:w-1/3  mt-[10vh] lg:mt-10 block lg:hidden ">
+          <CarreerHistory mode="alternate" />
         </div>
       </div>
       <Modal
@@ -296,6 +252,60 @@ export const Skills = (props) => {
       </Modal>
     </article>
   );
+
+  function CarreerHistory({ mode }) {
+    return (
+      <Timeline mode={mode}>
+        <Timeline.Item
+          dot={<UnlockOutlined className="text-lg" />}
+          label={
+            <div>
+              <p className="text-xl lg:text-xl text-cYellow font-semibold">
+                2020- 2022
+              </p>
+            </div>
+          }
+        >
+          <TimeLineItem
+            title="Accesa Full-Stack Developer"
+            points={[
+              'Project Consulting',
+              'Research',
+              'Deployment',
+              'Automation',
+            ]}
+          />
+        </Timeline.Item>
+        <Timeline.Item
+          dot={<RocketOutlined className="text-lg" />}
+          label={
+            <p className="text-xl lg:text-3xl text-cYellow font-semibold">
+              2021
+            </p>
+          }
+        >
+          <TimeLineItem
+            title="Huawei Hackathon winner"
+            points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
+            link="https://www.conalep.edu.mx/sites/default/files/2021-03/Convocatoria%20Hackato%CC%81n%20CONALEP%202021_1.pdf"
+          />
+        </Timeline.Item>
+        <Timeline.Item
+          dot={<CloudOutlined className="text-lg" />}
+          label={
+            <p className="text-xl lg:text-3xl text-cYellow font-semibold">
+              2022
+            </p>
+          }
+        >
+          <TimeLineItem
+            title="Call to Code | IBM Hackathon "
+            points={['Team Work', 'Problem solving', 'Fast MVP delivery']}
+          />
+        </Timeline.Item>
+      </Timeline>
+    );
+  }
 };
 export const Testimonials = (props) => {
   return (

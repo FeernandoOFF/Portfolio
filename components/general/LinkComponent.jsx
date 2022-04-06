@@ -8,7 +8,7 @@ function LinkComponent(props) {
     <Link href={props.href}>
       <button
         onClick={props.onClick}
-        className={` lg:mx-4 text-lg font-semibold    ${
+        className={` lg:mx-4 text-lg font-semibold    my-6 lg:my-0  ${
           route.pathname == props.href ? 'text-gray-500' : 'text-black'
         } `}
       >

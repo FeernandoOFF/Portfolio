@@ -22,12 +22,15 @@ export function ItemRail({ projects }) {
     <div>
       <div
         ref={reelRef}
-        className="font-mono flex flex-row flex-nowrap items-center justify-between overflow-x-hidden mt-32 mb-28 py-2"
+        className="font-mono grid grid-cols-3 items-center lg:grid-cols-5 overflow-hidden mt-32 mb-28 py-2"
       >
         {projects.map((project, index) => (
           <PortfolioItem
-            key={project.name}
-            // onClick={nextPage}
+            key={index}
+            href={project.url || '/'}
+            className={`${
+              index == 0 || index == 5 || index == 4 ? 'hidden lg:flex' : ''
+            } `}
             index={index}
             project={project}
             active={index == 2}

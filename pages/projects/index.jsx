@@ -1,4 +1,9 @@
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import {
+  AnimatePresence,
+  AnimateSharedLayout,
+  LayoutGroup,
+  motion,
+} from 'framer-motion';
 import React, { ReactElement, useState } from 'react';
 
 import Layout from '@/components/general/Layout';
@@ -45,6 +50,7 @@ const itemVariants = {
 
 export default function Projects({ projects }) {
   const [filter, setFilter] = useState('');
+  const [active, setActive] = useState(null);
   return (
     <div className="relative min-h-[92vh] lg:min-h-[92vh]  pt-10 overflow-hidden">
       <motion.div
@@ -67,12 +73,30 @@ export default function Projects({ projects }) {
           exit="exit"
           className="gallery grid grid-cols-1  lg:grid-cols-3 gap-8 max-w-[1400px]   mx-auto mt-10 overflow-y-scroll max-h-[500px] overflow-x-hidden lg:pr-8  pr-1 nice-scrollbar"
         >
-          <AnimatePresence>
-            {projects.map((project, i) => {
-              if (filter == '' || project.category == filter)
-                return <PortfolioItem project={project} key={project.title} />;
-            })}
-          </AnimatePresence>
+          <LayoutGroup>
+            <AnimatePresence>
+              {projects.map((project, i) => {
+                if (filter == '' || project.category == filter)
+                  return (
+                    <PortfolioItem
+                      project={project}
+                      setActive={setActive}
+                      key={project.title}
+                    />
+                  );
+              })}
+            </AnimatePresence>
+            <AnimatePresence>
+              {active && (
+                <Project
+                  key="item"
+                  id={active}
+                  close={() => setActive(null)}
+                  project={projects.find((project) => project.id === active)}
+                />
+              )}
+            </AnimatePresence>
+          </LayoutGroup>
         </motion.div>
       </motion.div>
       <div className="circle -z-10 w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] bg-cYellow rounded-full absolute left-[-50px] bottom-[-100px]"></div>
@@ -80,39 +104,6 @@ export default function Projects({ projects }) {
       <div className="circle -z-10 w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] bg-green-700 rounded-full absolute right-[50vw] top-[20vh]"></div>
     </div>
   );
-
-  function Filters({ filter, setFilter }) {
-    const categories = [
-      { title: 'All', value: '' },
-      { title: 'Frontend', value: 'frontend' },
-      { title: 'Backend', value: 'backend' },
-      { title: 'Full Stack', value: 'fullstack' },
-    ];
-    return (
-      <AnimateSharedLayout>
-        <ol className="flex mt-20  text-base lg:text-lg font-semibold text-gray-600 justify-between mx-auto max-w-[500px] ">
-          {categories.map((category, i) => (
-            <motion.li
-              key={i}
-              onClick={() => setFilter(category.value)}
-              className={`cursor-pointer relative ${
-                filter == category.value ? 'text-lg text-black' : ''
-              } `}
-            >
-              {category.title}
-              {filter === category.value && (
-                <motion.div
-                  layoutId="underline"
-                  className="underline"
-                  initial={false}
-                />
-              )}
-            </motion.li>
-          ))}
-        </ol>
-      </AnimateSharedLayout>
-    );
-  }
 }
 
 Projects.getLayout = (page) => (
@@ -129,10 +120,12 @@ export const getStaticProps = async () => {
   };
 };
 
-function PortfolioItem({ project }) {
+function PortfolioItem({ project, setActive }) {
   return (
     <motion.div
       variants={itemVariants}
+      onClick={() => setActive(project.id)}
+      layoutId={`portfolio-item-${project.id}`}
       exit={{
         opacity: 0,
         x: -300,
@@ -170,3 +163,101 @@ function PortfolioItem({ project }) {
     </motion.div>
   );
 }
+
+function Project({
+  id,
+  key,
+  close,
+  project: { title, description, mainImage, category },
+}) {
+  return (
+    <>
+      <motion.div
+        onClick={close}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
+        className="z-50"
+        style={{
+          pointerEvents: 'auto',
+          position: 'fixed',
+          background: 'rgba(0, 0, 0, 0.8)',
+          top: 0,
+          bottom: 0,
+          left: '50%',
+          transform: 'translateX(-50%) translateY(-30%)',
+          width: '100vw',
+          height: '200vh',
+          display: 'grid',
+          placeItems: 'center',
+        }}
+      >
+        <div className="lg:min-h-[600px] w-4/5 bg-gray-400 z-60  rounded-lg flex flex-nowrap">
+          <motion.div className="min-h-[500px] rounded-lg w-1/2 flex flex-col overflow-y-scroll overflow-x-hidden">
+            <motion.img
+              className="my-8 w-full min-h-[200px]"
+              src={URL + mainImage.url}
+              layoutId={`portfolio-item-${id}`}
+            />
+            <motion.img
+              className="my-8"
+              src={URL + mainImage.url}
+              layoutId={`portfolio-item-${id}`}
+            />
+          </motion.div>
+          <motion.div className="w-1/2 bg-cGreen flex flex-col">
+            <h2>{title}</h2>
+            <p>{description} </p>
+          </motion.div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
+function Filters({ filter, setFilter }) {
+  const categories = [
+    { title: 'All', value: '' },
+    { title: 'Frontend', value: 'frontend' },
+    { title: 'Backend', value: 'backend' },
+    { title: 'Full Stack', value: 'fullstack' },
+  ];
+  return (
+    <LayoutGroup>
+      <ol className="flex mt-20  text-base lg:text-lg font-semibold text-gray-600 justify-between mx-auto max-w-[500px] ">
+        {categories.map((category, i) => (
+          <motion.li
+            layoutId={i}
+            key={i}
+            onClick={() => setFilter(category.value)}
+            className={`cursor-pointer relative ${
+              filter == category.value ? 'text-lg text-black' : ''
+            } `}
+          >
+            {category.title}
+            {filter === category.value && (
+              <motion.div
+                layoutId="underline"
+                className="underline"
+                initial={false}
+              />
+            )}
+          </motion.li>
+        ))}
+      </ol>
+    </LayoutGroup>
+  );
+}
+
+// export async function getStaticPaths() {
+//   const projects = await getProjects();
+//   const paths = projects.map((project) => ({
+//     params: { projectId: String(project.id) },
+//   }));
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }

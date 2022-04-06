@@ -1,6 +1,6 @@
 import { MenuOutlined, MoreOutlined } from '@ant-design/icons';
 import { Button, Drawer, Popover } from 'antd';
-import { AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimateSharedLayout, LayoutGroup, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { ReactElement, useState } from 'react';
 import LinkComponent from './LinkComponent';
@@ -31,7 +31,7 @@ export const Header = () => {
   };
   return (
     <header className="container  mx-auto flex justify-between lg:p-3 py-3 px-2 items-center w-full">
-      <div className="left w-1/2 lg:w-1/6 flex justify-between items-center normalText">
+      <div className="left w-1/2 lg:w-1/6 flex justify-between items-center normalText pointer-events-none ">
         <p>FerOFF</p>
         <motion.p
           animate={{
@@ -39,22 +39,31 @@ export const Header = () => {
             transition: { duration: 5 },
           }}
           initial={{ textDecorationLine: 'none' }}
-          className=" underline-offset-4 normalText font-medium"
+          className=" underline-offset-4 normalText font-medium pointer-events-none "
         >
           Web Developer
         </motion.p>
       </div>
       <div className="right  flex justify-end lg:justify-between items-center max-w-[200px] min-w-[70px] ">
         {/* <MoreOutlined className="text-2xl" /> */}
-        <AnimateSharedLayout transition={{ duration: 2 }}>
+        <LayoutGroup transition={{ duration: 2 }}>
           <ul className="justify-between  py-4 hidden lg:flex">
             {links.map((link) => (
               <LinkComponent key={link.path} href={link.path}>
-                <span> {link.name}</span>
+                <div className="relative">
+                  <span className=""> {link.name}</span>
+                  {route.pathname === link.path && (
+                    <motion.div
+                      layoutId="header"
+                      className="underline "
+                      initial={false}
+                    />
+                  )}
+                </div>
               </LinkComponent>
             ))}
           </ul>
-        </AnimateSharedLayout>
+        </LayoutGroup>
         <button onClick={toggleSidebar} className="lg:hidden">
           <MenuOutlined className="text-2xl text-cYellow" />
         </button>

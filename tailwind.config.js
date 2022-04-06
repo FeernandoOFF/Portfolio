@@ -15,6 +15,7 @@ module.exports = {
         cYellow: '#FB9400',
         lightGreen: '#E2F4EC',
         cPurple: '#533B5D',
+        cGreen: '#E2F4EC',
       },
     },
   },

@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export function PortfolioItem({ active = false, project, onClick, index }) {
+export function PortfolioItem({
+  active = false,
+  project,
+  onClick,
+  index,
+  href,
+  className,
+}) {
   return (
-    <Link href={project.url || '/'}>
-      <div className="flex flex-col cursor-pointer">
+    <Link href={href}>
+      <div className={'flex flex-col cursor-pointer ' + className}>
         <motion.div
           initial={{
             scale: active ? 0 : 1,
@@ -20,7 +27,7 @@ export function PortfolioItem({ active = false, project, onClick, index }) {
           }}
           className={`mx-auto  bg-lightGreen w-28 h-28 rounded-full  ${
             active ? 'block' : 'hidden'
-          }`}
+          } `}
         ></motion.div>
         <motion.h4
           initial={{
