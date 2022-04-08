@@ -1,8 +1,9 @@
 import 'antd/dist/antd.css';
-import '../styles/globals.css';
 import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/general/Header';
+
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

@@ -10,6 +10,7 @@ import Layout from '@/components/general/Layout';
 import WorkingOn from '@/components/general/WorkingOn';
 import { getProjects, URL } from 'utils/getProjects';
 import Link from 'next/link';
+import { RightOutlined } from '@ant-design/icons';
 
 const list = {
   visible: {
@@ -166,7 +167,7 @@ function PortfolioItem({ project, setActive }) {
 function Project({
   id,
   close,
-  project: { title, description, url, mainImage, category },
+  project: { title, description, url, mainImage, category, categories },
 }) {
   return (
     <>
@@ -192,7 +193,7 @@ function Project({
         }}
       >
         <div
-          className="lg:min-h-[600px] max-h-[700px] overflow-hidden w-11/12 lg:w-4/5 bg-[#F4F4F4] z-60  rounded-lg flex flex-nowrap flex-col-reverse lg:flex-row"
+          className="lg:min-h-[600px] max-h-[700px] lg:max-w-[60vw] overflow-hidden w-11/12 lg:w-4/5 bg-[#F4F4F4] z-60  rounded-lg flex flex-nowrap flex-col-reverse lg:flex-row"
           onClick={(e) => e.stopPropagation()}
         >
           <motion.div className="little-scrollbar py-8  lg:w-1/2 flex lg:flex-col lg:overflow-y-scroll overflow-x-scroll items-center lg:p-8 lg:min-h-[500px] rounded-lg lg:overflow-x-hidden">
@@ -234,27 +235,39 @@ function Project({
               />
             </svg>
 
-            <div className="content pt-[5vh] px-8">
-              <p className="text-lg p-4 text-cYellow">{category} </p>
-              <h2 className="text-3xl font-bold ">{title}</h2>
-              <div className="div">
-                <p className="text-lg p-4 ">Technologies:</p>
-                <div className="flex flex-nowrap justify-start overflow-x-scroll little-scrollbar">
-                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
-                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
-                  <div className="w-20 h-8 mr-8 bg-gray-400 rounded-lg" />
+            <div className="content py-[5vh] px-8 flex flex-col justify-between h-full">
+              <div>
+                <p className="text-lg p-4 text-cYellow">{category} </p>
+                <h2 className="text-3xl font-bold ">{title}</h2>
+                <div className="div">
+                  <p className="text-lg p-4 ">Technologies:</p>
+                  <div className="flex flex-nowrap justify-start overflow-x-scroll little-scrollbar">
+                    {categories?.map((item) => (
+                      <div
+                        key={item.id}
+                        className={`p-3 mr-8  rounded-lg cursor-pointer`}
+                        style={{ background: item.color }}
+                      >
+                        <p className="">{item.name} </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+                <p className="text-lg p-8 ">{description} </p>
               </div>
-              <p className="text-lg p-8 ">{description} </p>
-
-              <div className="flex flex-row-reverse py-8">
-                <a
-                  className="p-3  bg-gray-400 rounded-md animate-pulse"
-                  href={url}
-                >
-                  See project
-                </a>
-              </div>
+              <motion.div
+                className="flex  py-8 items-center justify-end"
+                whileHover={{ y: -8 }}
+              >
+                <Link href={url}>
+                  <div className="flex items-center cursor-pointer">
+                    <p className="px-3">See project</p>
+                    <div className="w-12 h-12 rounded-lg shadow-2xl bg-gray-100 grid  place-items-center">
+                      <RightOutlined />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>

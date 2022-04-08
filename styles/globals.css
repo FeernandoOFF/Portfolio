@@ -4,13 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
+* {
   font-family: 'Quicksand', sans-serif;
 }
-a{ color:#333
+a {
+  color: #333;
 }
-a:hover{ color:#333
+
+a:hover {
+  color: #333;
 }
 
 .yellowTitle {
@@ -35,35 +37,33 @@ a:hover{ color:#333
 
 /* Track */
 .nice-scrollbar::-webkit-scrollbar-track {
-  background: #f4f4f4; 
+  background: #f4f4f4;
   border-radius: 20px;
 }
 
 /* Handle */
 .nice-scrollbar::-webkit-scrollbar-thumb {
-  background: #F9A826; 
+  background: #f9a826;
   border-radius: 20px;
 }
 
-
 /* Handle on hover */
 .nice-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #f4f4f4; 
+  background: #f4f4f4;
 }
-
 
 .little-scrollbar::-webkit-scrollbar {
   width: 4px;
   border-radius: 20px;
 }
 
-.little-scrollbar::-webkit-scrollbar-thumb{
+.little-scrollbar::-webkit-scrollbar-thumb {
   background: #f4f4f4;
   border-radius: 20px;
 }
 
 .imgBackground {
-  background: url("/background.png");
+  background: url('/background.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -100,7 +100,7 @@ a:hover{ color:#333
   z-index: 5;
 }
 
-.underline{
+.underline {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -110,7 +110,7 @@ a:hover{ color:#333
   background-color: #333;
 }
 
-@media screen and (max-width:640px){
+@media screen and (max-width: 640px) {
   .semiCircle {
     left: 90%;
   }
@@ -118,6 +118,3 @@ a:hover{ color:#333
     transform: translate(-1%, 10%);
   }
 }
-
-
-
