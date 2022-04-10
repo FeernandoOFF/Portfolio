@@ -10,7 +10,7 @@ import Layout from '@/components/general/Layout';
 import WorkingOn from '@/components/general/WorkingOn';
 import { getProjects, URL } from 'utils/getProjects';
 import Link from 'next/link';
-import { RightOutlined } from '@ant-design/icons';
+import { CloseOutlined, RightOutlined } from '@ant-design/icons';
 
 const list = {
   visible: {
@@ -230,7 +230,7 @@ function Project({
             <div className="content py-4 lg:py-[5vh] px-8 flex flex-col justify-between h-full">
               <div>
                 <p className="text-lg p-4 text-cYellow lg:block hidden">
-                  {category}{' '}
+                  {category}
                 </p>
                 <h2 className="text-3xl font-bold ">{title}</h2>
                 <div className="div">
@@ -242,7 +242,7 @@ function Project({
                         className={`lg:p-3 p-2 mr-8  rounded-lg cursor-pointer`}
                         style={{ background: item.color }}
                       >
-                        <p className="">{item.name} </p>
+                        <p className="p-0 m-0">{item.name} </p>
                       </div>
                     ))}
                   </div>
@@ -264,6 +264,9 @@ function Project({
               </motion.div>
             </div>
           </motion.div>
+          <p className="text-lg flex justify-end p-3" onClick={close}>
+            <CloseOutlined />
+          </p>
         </div>
       </motion.div>
     </>

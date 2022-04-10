@@ -329,7 +329,7 @@ export const Testimonials = (props) => {
       </div> */}
       <div className="p-4 text-center mt-[5vh]">
         <h5 className="yellowTitle">CONTACT</h5>
-        <div className="grid lg:grid-cols-3 lg:gap-48 items-center mt-8 px-8">
+        <div className="grid lg:grid-cols-3 lg:gap-48 items-center mt-8 lg:px-8">
           <div className="links my-16 lg:my-8 flex justify-between items-center max-w-[330px]">
             <SocialLink href="https://www.linkedin.com/in/feernandooff/">
               <LinkedinOutlined />
@@ -357,7 +357,7 @@ export const Testimonials = (props) => {
           </div>
         </div>
         <p className="text-cYellow font-semibold text-xl my-8 text-center">
-          me@feernandooff.com
+          ferobregon03@gmail.com
         </p>
       </div>
     </article>
