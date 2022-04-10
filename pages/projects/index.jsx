@@ -54,15 +54,7 @@ export default function Projects({ projects }) {
   const [active, setActive] = useState(null);
   return (
     <div className="relative min-h-[92vh] lg:min-h-[92vh]  pt-10 overflow-hidden">
-      <motion.div
-        style={{
-          background:
-            'linear-gradient(110.41deg, rgba(226, 244, 236, 0.83) 10.05%, rgba(226, 244, 236, 0.16) 100%)',
-          backdropFilter: 'blur(263px)',
-          boxShadow: '3px 11px 24px rgba(0, 0, 0, 0.25)',
-        }}
-        className="bg-green-300  w-11/12 rounded-xl p-8 lg:py-12 lg:px-18 mx-auto min-h-[80vh] max-h-[85vh] z-50 mb-[5vh]"
-      >
+      <motion.div className="project-container bg-green-300  w-11/12 rounded-xl p-8 lg:py-12 lg:px-18 mx-auto min-h-[80vh] max-h-[85vh] z-50 mb-[5vh]">
         <h2 className="text-center text-lg lg:text-2xl font-bold">
           My Recent Work
         </h2>
@@ -72,7 +64,7 @@ export default function Projects({ projects }) {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="gallery grid grid-cols-1  lg:grid-cols-3 gap-8 max-w-[1400px]   mx-auto mt-10 overflow-y-scroll max-h-[500px] overflow-x-hidden lg:pr-8  pr-1 nice-scrollbar"
+          className="gallery grid grid-cols-1  lg:grid-cols-3 gap-8 max-w-[1400px]   mx-auto mt-10 overflow-y-scroll  lg:max-h-[500px] max-h-[400px] overflow-x-hidden lg:pr-8  pr-1 nice-scrollbar"
         >
           <LayoutGroup>
             <AnimatePresence>
@@ -196,7 +188,7 @@ function Project({
           className="lg:min-h-[600px] max-h-[700px] lg:max-w-[60vw] overflow-hidden w-11/12 lg:w-4/5 bg-[#F4F4F4] z-60  rounded-lg flex flex-nowrap flex-col-reverse lg:flex-row"
           onClick={(e) => e.stopPropagation()}
         >
-          <motion.div className="little-scrollbar py-8  lg:w-1/2 flex lg:flex-col lg:overflow-y-scroll overflow-x-scroll items-center lg:p-8 lg:min-h-[500px] rounded-lg lg:overflow-x-hidden">
+          <motion.div className="little-scrollbar mt-8 lg:py-8  lg:w-1/2 flex lg:flex-col lg:overflow-y-scroll overflow-x-scroll items-center lg:p-8 lg:min-h-[500px] rounded-lg lg:overflow-x-hidden">
             <motion.img
               className="my-8 max-w-[500px] max-h-[550px] min-w-[300px] min-h-[250px] z-40 rounded-md lg:mr-0 mr-8"
               src={URL + mainImage.url}
@@ -235,17 +227,19 @@ function Project({
               />
             </svg>
 
-            <div className="content py-[5vh] px-8 flex flex-col justify-between h-full">
+            <div className="content py-4 lg:py-[5vh] px-8 flex flex-col justify-between h-full">
               <div>
-                <p className="text-lg p-4 text-cYellow">{category} </p>
+                <p className="text-lg p-4 text-cYellow lg:block hidden">
+                  {category}{' '}
+                </p>
                 <h2 className="text-3xl font-bold ">{title}</h2>
                 <div className="div">
-                  <p className="text-lg p-4 ">Technologies:</p>
+                  <p className="lg:text-lg p-4 ">Technologies:</p>
                   <div className="flex flex-nowrap justify-start overflow-x-scroll little-scrollbar">
                     {categories?.map((item) => (
                       <div
                         key={item.id}
-                        className={`p-3 mr-8  rounded-lg cursor-pointer`}
+                        className={`lg:p-3 p-2 mr-8  rounded-lg cursor-pointer`}
                         style={{ background: item.color }}
                       >
                         <p className="">{item.name} </p>
@@ -253,16 +247,16 @@ function Project({
                     ))}
                   </div>
                 </div>
-                <p className="text-lg p-8 ">{description} </p>
+                <p className="lg:text-lg text-base lg:p-8 ">{description} </p>
               </div>
               <motion.div
-                className="flex  py-8 items-center justify-end"
+                className="flex  lg:py-8 items-center justify-end group"
                 whileHover={{ y: -8 }}
               >
                 <Link href={url}>
                   <div className="flex items-center cursor-pointer">
                     <p className="px-3">See project</p>
-                    <div className="w-12 h-12 rounded-lg shadow-2xl bg-gray-100 grid  place-items-center">
+                    <div className="w-12 h-12 rounded-lg shadow-md bg-gray-100 grid  place-items-center group-hover:shadow-2xl">
                       <RightOutlined />
                     </div>
                   </div>
@@ -285,7 +279,7 @@ function Filters({ filter, setFilter }) {
   ];
   return (
     <LayoutGroup>
-      <ol className="flex mt-20  text-base lg:text-lg font-semibold text-gray-600 justify-between mx-auto max-w-[500px] ">
+      <ol className="flex mt-16  text-base lg:text-lg font-semibold text-gray-600 justify-between mx-auto max-w-[500px] ">
         {categories.map((category, i) => (
           <motion.li
             layoutId={i}
